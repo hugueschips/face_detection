@@ -1,0 +1,406 @@
+[
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 0.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 1.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 2.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 3.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 4.0
+    },
+    {
+        "emotion": "SURPRISE",
+        "timestamp": 5.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 6.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 7.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 8.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 9.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 10.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 11.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 12.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 13.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 14.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 15.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 16.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 17.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 18.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 19.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 20.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 21.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 22.0
+    },
+    {
+        "emotion": "HAPPY",
+        "timestamp": 23.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 24.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 25.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 26.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 27.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 28.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 29.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 30.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 31.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 32.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 33.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 34.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 35.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 36.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 37.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 38.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 39.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 40.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 41.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 42.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 43.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 44.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 45.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 46.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 47.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 48.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 49.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 50.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 51.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 52.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 53.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 54.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 55.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 56.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 57.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 58.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 59.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 60.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 61.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 62.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 63.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 64.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 65.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 66.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 67.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 68.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 69.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 70.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 71.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 72.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 73.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 74.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 75.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 76.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 77.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 78.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 79.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 80.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 81.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 82.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 83.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 84.0
+    },
+    {
+        "emotion": "HAPPY",
+        "timestamp": 85.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 86.0
+    },
+    {
+        "emotion": "FEAR",
+        "timestamp": 87.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 88.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 89.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 90.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 91.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 92.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 93.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 94.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 95.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 96.0
+    },
+    {
+        "emotion": "HAPPY",
+        "timestamp": 97.0
+    },
+    {
+        "emotion": "ANGRY",
+        "timestamp": 98.0
+    },
+    {
+        "emotion": "NEUTRAL",
+        "timestamp": 99.0
+    },
+    {
+        "emotion": "SAD",
+        "timestamp": 100.0
+    }
+]
