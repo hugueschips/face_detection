@@ -107,28 +107,55 @@ init_index_face = {key : 0 for key in emo_dic.keys()}
 while True:
     ret, frame = cap.read()
     ts = cap.get(cv2.CAP_PROP_POS_MSEC)/1000.
-    idx_voice = int(round(ts, 0))
-    if idx_voice < len(aud_dic):
-        voice_emotion = aud_dic[idx_voice]['emotion']
+
+    ## Get indices for each face
+    idx_face = {}
     for key, value in emo_dic.items():
-        idx = get_index_list(ts, fps, value, init_index_face[key])
+        idx_face[key] = get_index_list(ts, fps, value, init_index_face[key])
+        if idx_face[key]:
+            init_index_face[key] = idx_face[key]
+
+
+    ## Get face with biggest mouth
+    biggest_mouth_key = next(iter(pos_dic))
+    mouth_size = 0.
+    voice = False
+    for key, value in pos_dic.items():
+        if idx_face[key]:
+            if value[idx_face[key]]['mouth'] > mouth_size:
+                mouth_size = value[idx_face[key]]['mouth']
+                biggest_mouth_key = key
+                voice = True
+
+    ## Get audio index and create an audio dic
+    if voice:
+        idx_voice = int(round(ts, 0))
+        voice_dic = {key : None for key in pos_dic.keys()}
+        if idx_voice < len(aud_dic):
+            voice_dic[biggest_mouth_key] = aud_dic[idx_voice]['emotion']
+
+    ## Draw labels
+    for key, idx in idx_face.items():
         if idx:
-            init_index_face[key] = idx
             text = [emo_dic[key][idx]['emotion'], emo_dic[key][idx]['meaningful_expression']]
             x1, y1 = int(pos_dic[key][idx]['x1']), int(pos_dic[key][idx]['y1'])
             x2, y2 = int(pos_dic[key][idx]['x2']), int(pos_dic[key][idx]['y2'])
-            text = get_text(text, voice_emotion)
+            text = get_text(text, voice_dic[key])
             if text:
                 draw_label(frame, text, (x1, y1), (x2, y2))
-
+    ## Detect faces
     if detect_faces:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         face = face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5)
         for x, y, w, h in face:
            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+    ## Slow down and print timestamps
     if debug:
         sleep(0.001)
         cv2.putText(frame, '{:.5}'.format(ts), (10, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+
+    ## Wait for "q" key
     if cv2.waitKey(1) == ord('q'):
         break
     cv2.imshow('video', frame)
