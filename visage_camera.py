@@ -25,11 +25,12 @@ def get_index_list(ts, fps, dic_list, init_range):
 
 def get_text(text, text2):
     if text[0] or text[1]:
-        text.insert(0, 'Face')
+        text = [item.title() for item in text]
+        text.insert(0, 'FACE')
     else:
         text = []
     if text2:
-        text.append('Voice')
+        text.append('VOICE')
         text.append(text2)
     return(text)
 
