@@ -57,7 +57,7 @@ class Bubble:
         if p4_not_in_img:
             self.text = None
             return None
-        upper_right_corner_not_in_img = (self.p2[0]>l) or (self.p2[1]>h)
+        upper_right_corner_not_in_img = (self.p2[0]>l) or (self.p2[1]<5)
         for i in range(25):
             if not upper_right_corner_not_in_img:
                 break
@@ -67,7 +67,7 @@ class Bubble:
             self.triangle = self.get_triangle()
             self.x_text = self.p1[0] + self.margin
             self.y_text = self.p2[1] + self.dy + self.margin
-            upper_right_corner_not_in_img = (self.p2[0]>l) or (self.p2[1]>h)
+            upper_right_corner_not_in_img = (self.p2[0]>l) or (self.p2[1]<5)
         if upper_right_corner_not_in_img:
             self.text = None
             return None

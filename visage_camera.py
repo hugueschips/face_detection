@@ -41,6 +41,8 @@ def get_text(text, text2):
 init_index_face = {key : 0 for key in emo_dic.keys()}
 while True:
     ret, frame = cap.read()
+    if frame is None:
+        break
     ts = cap.get(cv2.CAP_PROP_POS_MSEC)/1000.
 
     ## Get indices for each face
@@ -94,7 +96,7 @@ while True:
 
     ## Debug mode
     if debug:
-        sleep(0.001)
+        #sleep(0.001)
         cv2.putText(frame, '{:.5}'.format(ts), (10, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
     ## Wait for "q" key
