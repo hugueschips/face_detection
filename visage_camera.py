@@ -16,6 +16,20 @@ with open('./lab/position.json', 'r') as f:
     pos_dic = json.load(f)
 f.close()
 
+## Retrieve all emotions
+emo1 = set([item['emotion'].capitalize() for item in aud_dic])
+emo2 = []
+for key, value in emo_dic.items():
+    for item in value:
+        if item['emotion']:
+            emo2.append(item['emotion'].capitalize())
+        if item['meaningful_expression']:
+            emo2.append(item['meaningful_expression'].capitalize())
+emo2 = set(emo2)
+emotion_list = [emo1.union(emo2)]
+
+
+
 face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt2.xml')
 cap = cv2.VideoCapture('./lab/video.mp4')
 #cap = cv2.VideoCapture(0)
@@ -36,7 +50,7 @@ def get_text(text, text2):
     if text2:
         out.append('VOICE')
         out.append(text2.capitalize())
-    return(out)
+    return out
 
 init_index_face = {key : 0 for key in emo_dic.keys()}
 while True:
@@ -97,7 +111,7 @@ while True:
     ## Debug mode
     if debug:
         #sleep(0.001)
-        cv2.putText(frame, '{:.5}'.format(ts), (10, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+        cv2.putText(frame, '{:.5}'.format(ts), (10, 300), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
     ## Wait for "q" key
     if cv2.waitKey(1) == ord('q'):
