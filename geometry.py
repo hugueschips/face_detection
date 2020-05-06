@@ -10,19 +10,13 @@ class Point:
         return str((self.x, self.y))
 
     def __add__(self, p):
-        self.x += p.x
-        self.y += p.y
-        return self
+        return Point(self.x + p.x, self.y + p.y)
 
     def __sub__(self, p):
-        self.x -= p.x
-        self.y -= p.y
-        return self
+        return Point(self.x - p.x, self.y - p.y)
 
     def __floordiv__(self, n):
-        self.x //= n
-        self.y //= n
-        return self
+        return Point(self.x // n, self.y // n)
 
     def __eq__(self, p):
         return self.x == p.x and self.y == p.y

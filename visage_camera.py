@@ -1,7 +1,10 @@
 import cv2
 import json
+import numpy as np
 from time import sleep
+from geometry import Point, Rectangle
 from bubble import Bubble
+
 
 debug = True
 detect_faces = False
@@ -40,19 +43,27 @@ def get_index_list(ts, fps, dic_list, init_range):
         if abs(ts - dic_list[i]['timestamp']) <= .9/fps:
             return i
 
-def get_text(text, text2):
+def get_text(text, text2, color_dic):
+    def new_random_color():
+        return (int(np.random.randint(0, 256)), int(np.random.randint(0, 256)), int(np.random.randint(0, 256)) )
     out = []
     for item in text:
         if item:
             out.append(item.capitalize())
+            if item.capitalize() not in color_dic.keys():
+                color_dic[item.capitalize()] = new_random_color()
     if out:
         out.insert(0, 'FACE')
     if text2:
         out.append('VOICE')
         out.append(text2.capitalize())
+        if text2.capitalize() not in color_dic.keys():
+            color_dic[text2.capitalize()] = new_random_color()
     return out
 
+
 init_index_face = {key : 0 for key in emo_dic.keys()}
+color_dic = {'FACE' : (0,0,0), 'VOICE': (0,0,0)}
 while True:
     ret, frame = cap.read()
     if frame is None:
@@ -85,21 +96,18 @@ while True:
             voice_dic[biggest_mouth_key] = aud_dic[idx_voice]['emotion']
 
     ## Draw bubbles
-    bg_color = (0, 255, 0)
-    font_face = cv2.FONT_HERSHEY_SIMPLEX
-    scale = 2 * frame.shape[1]/1280.
-    thickness = 4
-    margin = 20
+    bubbles = []
     for key, idx in idx_face.items():
         if idx:
             text = [emo_dic[key][idx]['emotion'], emo_dic[key][idx]['meaningful_expression']]
-            x1, y1 = int(pos_dic[key][idx]['x1']), int(pos_dic[key][idx]['y1'])
-            x2, y2 = int(pos_dic[key][idx]['x2']), int(pos_dic[key][idx]['y2'])
-            text = get_text(text, voice_dic[key])
+            text = get_text(text, voice_dic[key], color_dic)
+            pt1 = Point(int(pos_dic[key][idx]['x1']), int(pos_dic[key][idx]['y1']))
+            pt2 = Point(int(pos_dic[key][idx]['x2']), int(pos_dic[key][idx]['y2']))
             if text:
-                bubble = Bubble(frame, (x1, y1), (x2, y2), text, bg_color, font_face, scale, thickness, margin)
-                bubble.uncrop()
-                bubble.draw(frame)
+                bubbles.append(Bubble(frame, pt1, pt2, text))
+    for i, bubble in enumerate(bubbles):
+
+        bubble.draw(frame, color_dic)
 
     ## Detect faces
     if detect_faces:
