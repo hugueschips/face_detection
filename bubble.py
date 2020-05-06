@@ -4,6 +4,18 @@ from geometry import Point, Rectangle
 
 
 class Bubble:
+    '''
+             a ____________ b
+              |            |
+              |            |
+              |            |
+              |            |
+              |____________|
+             d   /          c
+                /
+               /
+             e
+         '''
     bg_color = (0, 255, 0)
     font_face = cv2.FONT_HERSHEY_SIMPLEX
     thickness = 4
@@ -11,7 +23,7 @@ class Bubble:
 
     def __init__(self, img, pt1, pt2, text):
         self.ydim, self.xdim, nc = img.shape
-        self.scale = 3 * self.xdim / 1280.
+        self.scale = 1 * self.xdim / 1280.
         self.pt1 = pt1
         self.pt2 = pt2
         self.text = text

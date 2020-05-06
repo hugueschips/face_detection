@@ -73,17 +73,28 @@ class Rectangle:
         b = self.is_left_of(r) or r.is_left_of(self) or self.is_above(r) or r.is_above(self)
         return not b
 
+    def min_overlap(self, r):
+        dx = min(self.c.x, r.c.x) - max(self.a.x, r.a.x)
+        dy = min(self.c.y, r.c.y) - max(self.a.y, r.a.y)
+        if dx > 0 and dy > 0:
+                if dx < dy:
+                    return dx, 0, (1, -1)[self.a.x < r.a.x]
+                else:
+                    return dy, 1, (1, -1)[self.a.y < r.a.y]
+
     def shift_right(self, x):
         if (self.a.x + x >= 0) and (self.c.x + x <= self.xdim):
             self.a.x += x
             self.c.x += x
-        return self
+            return True
+        return False
 
     def shift_down(self, y):
         if (self.a.y + y >= 0) and (self.c.y + y <= self.ydim):
             self.a.y += y
             self.c.y += y
-        return self
+            return True
+        return False
 
     def center(self):
         return (self.a + self.c) // 2
@@ -93,6 +104,3 @@ class Rectangle:
 
     def y_diff(self, r):
         return (self.a.y - r.a.y)
-
-
-

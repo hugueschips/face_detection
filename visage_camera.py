@@ -61,8 +61,8 @@ def get_text(text, text2, color_dic):
             color_dic[text2.capitalize()] = new_random_color()
     return out
 
-
 init_index_face = {key : 0 for key in emo_dic.keys()}
+mouth_movement = {key : [0 for i in range(int(fps))] for key in emo_dic.keys()}
 color_dic = {'FACE' : (0,0,0), 'VOICE': (0,0,0)}
 while True:
     ret, frame = cap.read()
@@ -83,8 +83,10 @@ while True:
     voice = False
     for key, value in pos_dic.items():
         if idx_face[key]:
-            if value[idx_face[key]]['mouth'] > mouth_size:
-                mouth_size = value[idx_face[key]]['mouth']
+            mouth_movement[key].append(value[idx_face[key]]['mouth'])
+            val = np.std(mouth_movement[key][-int(fps):])
+            if val > mouth_size:
+                mouth_size = val
                 biggest_mouth_key = key
                 voice = True
 
@@ -106,7 +108,20 @@ while True:
             if text:
                 bubbles.append(Bubble(frame, pt1, pt2, text))
     for i, bubble in enumerate(bubbles):
-
+        for j, other_bubble in enumerate(bubbles[i+1:]):
+            if bubble.rec.do_overlap(other_bubble.rec):
+                print(bubble.rec)
+                print(other_bubble.rec)
+                dxy, dim, sign = bubble.rec.min_overlap(other_bubble.rec)
+                print(dxy, dim, sign)
+                if dim == 0:
+                    bubble.rec.shift_right(dxy * sign)
+                    other_bubble.rec.shift_right(-dxy * sign)
+                elif dim == 1:
+                    bubble.rec.shift_down(dxy * sign)
+                    other_bubble.rec.shift_down(-dxy * sign)
+                bubble.update_ac()
+                other_bubble.update_ac()
         bubble.draw(frame, color_dic)
 
     ## Detect faces
