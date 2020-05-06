@@ -24,6 +24,7 @@ class Bubble:
     def __init__(self, img, pt1, pt2, text):
         self.ydim, self.xdim, nc = img.shape
         self.scale = 1 * self.xdim / 1280.
+        self.margin = int(self.scale * self.margin)
         self.pt1 = pt1
         self.pt2 = pt2
         self.text = text

@@ -78,16 +78,16 @@ while True:
             init_index_face[key] = idx_face[key]
 
     ## Get face with biggest mouth
-    biggest_mouth_key = next(iter(pos_dic))
-    mouth_size = 0.
+    speaker_key = next(iter(pos_dic))
+    mouth_std = 0.
     voice = False
     for key, value in pos_dic.items():
         if idx_face[key]:
             mouth_movement[key].append(value[idx_face[key]]['mouth'])
             val = np.std(mouth_movement[key][-int(fps):])
-            if val > mouth_size:
-                mouth_size = val
-                biggest_mouth_key = key
+            if val > mouth_std:
+                mouth_std = val
+                speaker_key = key
                 voice = True
 
     ## Get audio index and create an audio dic
@@ -95,7 +95,7 @@ while True:
         idx_voice = int(round(ts, 0))
         voice_dic = {key : None for key in pos_dic.keys()}
         if idx_voice < len(aud_dic):
-            voice_dic[biggest_mouth_key] = aud_dic[idx_voice]['emotion']
+            voice_dic[speaker_key] = aud_dic[idx_voice]['emotion']
 
     ## Draw bubbles
     bubbles = []
@@ -133,7 +133,7 @@ while True:
 
     ## Debug mode
     if debug:
-        #sleep(0.001)
+        sleep(0.01)
         cv2.putText(frame, '{:.5}'.format(ts), (10, 300), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
     ## Wait for "q" key
