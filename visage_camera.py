@@ -8,9 +8,9 @@ from geometry import Point, Rectangle
 from bubble import Bubble
 
 ## Script options
-debug = True
+debug = False
 detect_faces = False
-add_audio = False
+add_audio = True
 
 if detect_faces:
     face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt2.xml')
@@ -74,7 +74,7 @@ def get_text(text, text2, color_dic):
 
 ## Initiate variables
 init_index_face = {key: 0 for key in emo_dic.keys()}
-mouth_movement = {key: [0 for i in range(int(fps))] for key in emo_dic.keys()}
+mouth_movement = {key: [0 for i in range(int(3*fps))] for key in emo_dic.keys()}
 color_dic = {'FACE': (0, 0, 0), 'VOICE': (0, 0, 0)}
 
 ## Main loop
