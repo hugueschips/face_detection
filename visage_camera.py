@@ -115,8 +115,8 @@ while True:
                 dxy, dim, sign = bubble.rec.min_overlap(other_bubble.rec)
                 print(dxy, dim, sign)
                 if dim == 0:
-                    bubble.rec.shift_right(dxy * sign)
-                    other_bubble.rec.shift_right(-dxy * sign)
+                    bubble.rec.shift_right(dxy * sign, bubble.dy)
+                    other_bubble.rec.shift_right(-dxy * sign, other_bubble.dy)
                 elif dim == 1:
                     bubble.rec.shift_down(dxy * sign)
                     other_bubble.rec.shift_down(-dxy * sign)
@@ -133,7 +133,7 @@ while True:
 
     ## Debug mode
     if debug:
-        sleep(0.01)
+        #sleep(0.01)
         cv2.putText(frame, '{:.5}'.format(ts), (10, 300), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
     ## Wait for "q" key

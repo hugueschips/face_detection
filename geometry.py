@@ -82,10 +82,13 @@ class Rectangle:
                 else:
                     return dy, 1, (1, -1)[self.a.y < r.a.y]
 
-    def shift_right(self, x):
+    def shift_right(self, x, dy=0):
         if (self.a.x + x >= 0) and (self.c.x + x <= self.xdim):
             self.a.x += x
             self.c.x += x
+            # shift up a little bit to avoid printing bubble over the eyes
+            if x<0 and dy>0:
+                self.shift_down(-dy)
             return True
         return False
 
