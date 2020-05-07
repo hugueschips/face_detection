@@ -128,8 +128,8 @@ while True:
             if bubble.rec.do_overlap(other_bubble.rec):
                 dxy, dim, sign = bubble.rec.min_overlap(other_bubble.rec)
                 if dim == 0:
-                    bubble.rec.shift_right(dxy * sign)
-                    other_bubble.rec.shift_right(-dxy * sign)
+                    bubble.rec.shift_right(int(dxy/2+1) * sign)
+                    other_bubble.rec.shift_right(-int(dxy/2+1) * sign)
                     bubble.avoid_eyes()
                 elif dim == 1:
                     bubble.rec.shift_down(dxy * sign)

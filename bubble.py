@@ -41,7 +41,7 @@ class Bubble:
         n_lines = len(self.text)
         longuest_line = max(self.text, key=len)
         txt_size = cv2.getTextSize(longuest_line, self.font_face, self.scale, self.thickness)
-        self.dy = txt_size[0][1] + 3
+        self.dy = int(txt_size[0][1] + 5*self.scale)
         self.shape = (txt_size[0][0] + 2 * self.margin, n_lines * self.dy + 2 * self.margin)
 
     def get_ace(self):
@@ -87,7 +87,14 @@ class Bubble:
             ## Draw arrow
             center = (self.a + self.c) // 2
             center.x = self.c.x #max(center.x, self.e.x + self.dy)
-            cv2.line(img, (self.e.x, self.e.y), (center.x, center.y), (0, 0, 0), self.thickness)
+            #cv2.line(img, (self.e.x, self.e.y), (center.x, center.y), (0, 0, 0), self.thickness)
+            ## Draw arrow v2
+            pts = np.array([[
+                (center.x, center.y - 2*self.dy // 2),
+                (center.x, center.y + self.dy // 2),
+                (self.e.x, self.e.y)
+            ]], dtype=np.int32)
+            cv2.fillPoly(img, pts, (0, 0, 0))
             ## Draw white rectangle
             cv2.rectangle(img, (self.a.x, self.a.y), (self.c.x, self.c.y), (255, 255, 255), cv2.FILLED)
             ## Draw black rectangle boarders
@@ -96,4 +103,4 @@ class Bubble:
             for i, line in enumerate(self.text):
                 color = color_dic[line]
                 p = self.text_start(i)
-                cv2.putText(img, line, (p.x, p.y), self.font_face, self.scale, color, 1, cv2.LINE_AA)
+                cv2.putText(img, line, (p.x, p.y), self.font_face, self.scale, color, 2, cv2.LINE_AA)
