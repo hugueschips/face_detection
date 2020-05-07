@@ -41,7 +41,7 @@ class Bubble:
         """
         n_lines = len(self.text)
         longuest_line = max(self.text, key=len)
-        txt_size = cv2.getTextSize(longuest_line, self.font_face, self.scale, self.thickness)
+        txt_size = cv2.getTextSize(longuest_line, self.font_face, self.scale, self.text_thickness)
         self.dy = int(txt_size[0][1] + 5*self.scale)
         self.shape = (txt_size[0][0] + 2 * self.margin, n_lines * self.dy + 2 * self.margin)
 

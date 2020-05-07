@@ -10,7 +10,7 @@ from bubble import Bubble
 ## Script options
 debug = False
 detect_faces = False
-add_audio = False
+add_audio = True
 
 if detect_faces:
     face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt2.xml')
