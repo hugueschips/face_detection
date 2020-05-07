@@ -1,6 +1,7 @@
 import cv2
 import json
 import numpy as np
+import moviepy.editor as me
 from time import sleep
 from geometry import Point, Rectangle
 from bubble import Bubble
@@ -8,6 +9,10 @@ from bubble import Bubble
 
 debug = True
 detect_faces = False
+add_audio = True
+
+if detect_faces:
+    face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt2.xml')
 
 with open('./lab/emotion.json', 'r') as f:
     emo_dic = json.load(f)
@@ -19,24 +24,20 @@ with open('./lab/position.json', 'r') as f:
     pos_dic = json.load(f)
 f.close()
 
-## Retrieve all emotions
-emo1 = set([item['emotion'].capitalize() for item in aud_dic])
-emo2 = []
-for key, value in emo_dic.items():
-    for item in value:
-        if item['emotion']:
-            emo2.append(item['emotion'].capitalize())
-        if item['meaningful_expression']:
-            emo2.append(item['meaningful_expression'].capitalize())
-emo2 = set(emo2)
-emotion_list = [emo1.union(emo2)]
 
-
-
-face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_alt2.xml')
-cap = cv2.VideoCapture('./lab/video.mp4')
-#cap = cv2.VideoCapture(0)
+## Capture video
+#videoClip = 0
+inputvideo = './lab/video.mp4'
+cap = cv2.VideoCapture(inputvideo)
 fps = cap.get(cv2.CAP_PROP_FPS)
+
+
+
+## Write video
+frame_width = int(cap.get(3))
+frame_height = int(cap.get(4))
+outputvideo = 'output.avi'
+out = cv2.VideoWriter(outputvideo,cv2.VideoWriter_fourcc('M','J','P','G'), fps, (frame_width,frame_height))
 
 def get_index_list(ts, fps, dic_list, init_range):
     for i in range(init_range, len(dic_list)):
@@ -110,13 +111,11 @@ while True:
     for i, bubble in enumerate(bubbles):
         for j, other_bubble in enumerate(bubbles[i+1:]):
             if bubble.rec.do_overlap(other_bubble.rec):
-                print(bubble.rec)
-                print(other_bubble.rec)
                 dxy, dim, sign = bubble.rec.min_overlap(other_bubble.rec)
-                print(dxy, dim, sign)
                 if dim == 0:
-                    bubble.rec.shift_right(dxy * sign, bubble.dy)
-                    other_bubble.rec.shift_right(-dxy * sign, other_bubble.dy)
+                    bubble.rec.shift_right(dxy * sign)
+                    other_bubble.rec.shift_right(-dxy * sign)
+                    bubble.avoid_eyes()
                 elif dim == 1:
                     bubble.rec.shift_down(dxy * sign)
                     other_bubble.rec.shift_down(-dxy * sign)
@@ -140,6 +139,14 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
+    out.write(frame)
     cv2.imshow('video', frame)
 cap.release()
+out.release()
 cv2.destroyAllWindows()
+
+if add_audio:
+    audio = me.AudioFileClip(inputvideo)
+    videoclip = me.VideoFileClip(outputvideo)
+    videoclip = videoclip.set_audio(audio)
+    videoclip.write_videofile('output.avi', fps=fps, codec='png')
