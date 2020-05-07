@@ -20,6 +20,7 @@ class Bubble:
     bg_color = (0, 255, 0)
     font_face = cv2.FONT_HERSHEY_SIMPLEX
     thickness = 4
+    text_thickness = 2
     margin = 20
 
     def __init__(self, img, pt1, pt2, text):
@@ -101,6 +102,8 @@ class Bubble:
             cv2.rectangle(img, (self.a.x, self.a.y), (self.c.x, self.c.y), (0, 0, 0), self.thickness)
             ## Add text inside
             for i, line in enumerate(self.text):
+                px = self.rec.center().x - \
+                     int(cv2.getTextSize(line, self.font_face, self.scale, self.text_thickness)[0][0]/2 +1)
                 color = color_dic[line]
                 p = self.text_start(i)
-                cv2.putText(img, line, (p.x, p.y), self.font_face, self.scale, color, 2, cv2.LINE_AA)
+                cv2.putText(img, line, (px, p.y), self.font_face, self.scale, color, self.text_thickness, cv2.LINE_AA)
