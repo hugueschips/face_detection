@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f42ff17-7ced-4c82-ae55-ba35f91b5459" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bubble.py" beforeDir="false" afterPath="$PROJECT_DIR$/bubble.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputTEMP_MPY_wvf_snd.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/visage_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/visage_camera.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,25 +104,25 @@
       <screen x="0" y="23" width="1280" height="739" />
     </state>
     <state x="357" y="23" width="566" height="739" key="#main/0.23.1280.739@0.23.1280.739" timestamp="1588407526620" />
-    <state width="1238" height="185" key="GridCell.Tab.0.bottom" timestamp="1588858429054">
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom" timestamp="1588860312091">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="185" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588858429054" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588860312091" />
     <state width="1238" height="185" key="GridCell.Tab.0.bottom/0.23.1280.739@0.23.1280.739" timestamp="1588840456046" />
-    <state width="1238" height="185" key="GridCell.Tab.0.center" timestamp="1588858429052">
+    <state width="1238" height="185" key="GridCell.Tab.0.center" timestamp="1588860312089">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="185" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588858429052" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588860312089" />
     <state width="1238" height="185" key="GridCell.Tab.0.center/0.23.1280.739@0.23.1280.739" timestamp="1588840456045" />
-    <state width="1238" height="185" key="GridCell.Tab.0.left" timestamp="1588858429051">
+    <state width="1238" height="185" key="GridCell.Tab.0.left" timestamp="1588860312089">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="185" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588858429051" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588860312089" />
     <state width="1238" height="185" key="GridCell.Tab.0.left/0.23.1280.739@0.23.1280.739" timestamp="1588840456045" />
-    <state width="1238" height="185" key="GridCell.Tab.0.right" timestamp="1588858429053">
+    <state width="1238" height="185" key="GridCell.Tab.0.right" timestamp="1588860312090">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="185" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588858429053" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588860312090" />
     <state width="1238" height="185" key="GridCell.Tab.0.right/0.23.1280.739@0.23.1280.739" timestamp="1588840456046" />
     <state width="1238" height="230" key="GridCell.Tab.1.bottom" timestamp="1588789483935">
       <screen x="0" y="23" width="1280" height="739" />
@@ -151,5 +152,15 @@
       <screen x="0" y="23" width="1280" height="739" />
     </state>
     <state x="319" y="149" width="639" height="486" key="find.popup/0.23.1280.739@0.23.1280.739" timestamp="1588620783007" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geometry.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

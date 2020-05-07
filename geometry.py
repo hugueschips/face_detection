@@ -35,6 +35,9 @@ class Rectangle:
      '''
 
     def __init__(self, a, c, xdim, ydim):
+        """
+        create a rectangle is contained in the image, whose shape in (ydim, xdim)
+        """
         assert a.x < c.x
         assert a.y < c.y
         if a.x < 0:
@@ -74,6 +77,10 @@ class Rectangle:
         return not b
 
     def min_overlap(self, r):
+        """
+        returns minimum overlapping between two rectangle, its coordinate (x or y), and which
+        rectangle is above or left
+        """
         dx = min(self.c.x, r.c.x) - max(self.a.x, r.a.x)
         dy = min(self.c.y, r.c.y) - max(self.a.y, r.a.y)
         if dx > 0 and dy > 0:
@@ -108,8 +115,3 @@ class Rectangle:
     def center(self):
         return (self.a + self.c) // 2
 
-    def x_diff(self, r):
-        return (self.a.x - r.a.x)
-
-    def y_diff(self, r):
-        return (self.a.y - r.a.y)
